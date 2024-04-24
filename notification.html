@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notification Popup</title>
+    <style>
+      /* Styles for the popup container */
+      .popup-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        display: none; /* Initially hidden */
+      }
+
+      /* Styles for the checkbox */
+      .popup-checkbox {
+        display: none; /* Hide the checkbox */
+      }
+
+      /* Styles for the label */
+      .popup-trigger {
+        cursor: pointer;
+      }
+
+      /* Style for the overlay */
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999; /* Ensure the overlay appears above everything else */
+        display: none; /* Initially hidden */
+      }
+
+      /* Show the popup container when the checkbox is checked */
+      .popup-checkbox:checked + .popup-overlay + .popup-container {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Checkbox input -->
+    <input type="checkbox" id="popup-toggle" class="popup-checkbox" />
+
+    <!-- Overlay -->
+    <div class="popup-overlay"></div>
+
+    <!-- Popup container -->
+    <div class="popup-container">
+      <h2>Notification</h2>
+      <p>This is a notification popup!</p>
+      <label for="popup-toggle" class="popup-trigger">Close</label>
+    </div>
+
+    <!-- Label to trigger the popup -->
+    <label for="popup-toggle" class="popup-trigger">Show Notification</label>
+  </body>
+</html>

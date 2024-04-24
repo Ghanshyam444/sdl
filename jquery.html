@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Input Fields</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Function to perform operations when a button is clicked
+        $("#calculateBtn").click(function () {
+          // Get values from input fields
+          var num1 = parseFloat($("#num1").val());
+          var num2 = parseFloat($("#num2").val());
+
+          // Perform operations
+          var sum = num1 + num2;
+          var difference = num1 - num2;
+          var product = num1 * num2;
+          var quotient = num1 / num2;
+
+          // Display results
+          $("#sum").text("Sum: " + sum);
+          $("#difference").text("Difference: " + difference);
+          $("#product").text("Product: " + product);
+          $("#quotient").text("Quotient: " + quotient);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" /><br /><br />
+
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" /><br /><br />
+
+    <button id="calculateBtn">Calculate</button><br /><br />
+
+    <div id="sum"></div>
+    <div id="difference"></div>
+    <div id="product"></div>
+    <div id="quotient"></div>
+  </body>
+</html>

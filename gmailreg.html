@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gmail Registration</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4285f4;
+        color: #fff;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #357ae8;
+      }
+      .error-message {
+        color: #ff0000;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Create your Gmail Account</h2>
+      <form id="registrationForm" onsubmit="return validateForm()">
+        <input type="text" id="firstName" placeholder="First Name" />
+        <div id="firstNameError" class="error-message"></div>
+        <input type="text" id="lastName" placeholder="Last Name" />
+        <div id="lastNameError" class="error-message"></div>
+        <input type="email" id="email" placeholder="Email" />
+        <div id="emailError" class="error-message"></div>
+        <input type="password" id="password" placeholder="Password" />
+        <div id="passwordError" class="error-message"></div>
+        <input type="submit" value="Create Account" />
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        var firstName = document.getElementById("firstName").value.trim();
+        var lastName = document.getElementById("lastName").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var password = document.getElementById("password").value;
+
+        var firstNameError = document.getElementById("firstNameError");
+        var lastNameError = document.getElementById("lastNameError");
+        var emailError = document.getElementById("emailError");
+        var passwordError = document.getElementById("passwordError");
+
+        var valid = true;
+
+        // First Name validation
+        if (firstName === "") {
+          firstNameError.style.display = "block";
+          firstNameError.textContent = "Please enter your first name.";
+          valid = false;
+        } else {
+          firstNameError.style.display = "none";
+          firstNameError.textContent = "";
+        }
+
+        // Last Name validation
+        if (lastName === "") {
+          lastNameError.style.display = "block";
+          lastNameError.textContent = "Please enter your last name.";
+          valid = false;
+        } else {
+          lastNameError.style.display = "none";
+          lastNameError.textContent = "";
+        }
+
+        // Email validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          emailError.style.display = "block";
+          emailError.textContent = "Please enter a valid email address.";
+          valid = false;
+        } else {
+          emailError.style.display = "none";
+          emailError.textContent = "";
+        }
+
+        // Password validation
+        if (password === "") {
+          passwordError.style.display = "block";
+          passwordError.textContent = "Please enter a password.";
+          valid = false;
+        } else {
+          passwordError.style.display = "none";
+          passwordError.textContent = "";
+        }
+
+        return valid;
+      }
+    </script>
+  </body>
+</html>

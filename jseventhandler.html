@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College ERP Feedback</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      textarea {
+        height: 100px;
+      }
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Feedback Form</h2>
+      <form id="feedbackForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email:</label>
+        <input type="text" id="email" name="email" required />
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("feedbackForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the form from submitting normally
+
+          // Get form elements
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var feedback = document.getElementById("feedback").value;
+
+          // Validate email format
+          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          // You can add more validation for name, feedback, etc. here if needed
+
+          // If all validation passes, you can proceed to submit the form data
+          submitFeedback(name, email, feedback);
+        });
+
+      function submitFeedback(name, email, feedback) {
+        // Here you can perform actions like sending the form data to the server using AJAX,
+        // or any other operation you need to perform with the feedback data
+        // For now, let's just log the data to the console
+        console.log("Name: " + name);
+        console.log("Email: " + email);
+        console.log("Feedback: " + feedback);
+
+        // Optionally, you can reset the form after submission
+        document.getElementById("feedbackForm").reset();
+      }
+    </script>
+  </body>
+</html>

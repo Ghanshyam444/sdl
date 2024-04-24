@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci Series</title>
+  </head>
+  <body>
+    <div id="fibonacci-series"></div>
+
+    <script>
+      // Function to generate Fibonacci series up to a given limit
+      function generateFibonacciSeries(limit) {
+        let fibonacciSeries = [0, 1];
+
+        for (let i = 2; i < limit; i++) {
+          fibonacciSeries[i] = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+        }
+
+        return fibonacciSeries;
+      }
+
+      // Function to display Fibonacci series on the HTML page
+      function displayFibonacciSeries(series) {
+        const seriesContainer = document.getElementById("fibonacci-series");
+        seriesContainer.innerHTML = "";
+
+        for (let i = 0; i < series.length; i++) {
+          const numberElement = document.createElement("span");
+          numberElement.textContent = series[i] + " ";
+          seriesContainer.appendChild(numberElement);
+        }
+      }
+
+      // Generate Fibonacci series up to a limit
+      const fibonacciLimit = 10; // Change this to generate series of desired length
+      const fibonacciSeries = generateFibonacciSeries(fibonacciLimit);
+
+      // Display Fibonacci series on the HTML page
+      displayFibonacciSeries(fibonacciSeries);
+    </script>
+  </body>
+</html>
